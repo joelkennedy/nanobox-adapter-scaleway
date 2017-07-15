@@ -63,7 +63,7 @@ class Scaleway
 	    ->expectsJson()
 	    ->send();
 
-    return $response->body->organizations;
+    return $response->body;
   }
 
   public function verifytoken($authToken)
