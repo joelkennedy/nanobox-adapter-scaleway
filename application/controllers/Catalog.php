@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require APPPATH . 'libraries/REST_Controller.php';
 
 class Catalog extends CI_Controller {
 
-	public function index()
+	public function index_get()
 	{
 		$response = array(
 			'id' => 'par1',
@@ -25,6 +26,6 @@ class Catalog extends CI_Controller {
 			)
 		);
 
-		$this->response->output($response, 200);
+		$this->set_response($response, 200);
 	}
 }

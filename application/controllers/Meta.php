@@ -1,9 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require APPPATH . 'libraries/REST_Controller.php';
 
 class Meta extends CI_Controller {
 
-	public function index()
+	public function index_get()
 	{
 		$response = array(
 			'id' => 'scaleway',
@@ -26,6 +27,6 @@ class Meta extends CI_Controller {
 			'instructions' => 'For instructions on how to retrieve a Scaleway access token, visit the repository.'
 		);
 
-		$this->response->output($response, 200);
+		$this->set_response($response, 200);
 	}
 }
