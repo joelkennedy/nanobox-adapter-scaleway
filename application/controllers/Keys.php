@@ -7,8 +7,8 @@ class Keys extends REST_Controller {
 	public function index_post()
 	{
 		$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
-		$name = $this->input->post('name');
-		$key = $this->input->post('key');
+		$name = $this->post('name');
+		$key = $this->post('key');
 
 		if ($accessToken === NULL) {
 			$this->set_response(['errors' => array("You must provide the access token header")], 400);
