@@ -31,7 +31,7 @@ class Scaleway
       'organization' => $organization,
       'name' => $name,
       'image' => $image,
-      'commercial_type' => $type
+      'commercial_type' => $type,
       'tags' => array('nanobox'),
       'enable_ipv6' => true
     );
