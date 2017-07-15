@@ -21,7 +21,7 @@ class Meta extends CI_Controller {
 			'ssh_key_method' => 'reference',
 			'bootstrap_script' => 'https://s3.amazonaws.com/tools.nanobox.io/bootstrap/ubuntu.sh',
 			'credentials_fields' => array(
-				array('key' => 'token', 'label' => 'Access Token')
+				array('key' => 'access-token', 'label' => 'Auth Token')
 			),
 			'instructions' => 'For instructions on how to retrieve a Scaleway access token, visit the repository.'
 		);

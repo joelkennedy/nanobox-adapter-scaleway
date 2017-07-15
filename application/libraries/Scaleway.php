@@ -65,4 +65,19 @@ class Scaleway
 
     return $response->body->organizations;
   }
+
+  public function verifytoken($authToken)
+  {
+    $url = "https://account.scaleway.com/organizations";
+		$response = \Httpful\Request::get($url)
+      ->xAuthToken($authToken)
+	    ->expectsJson()
+	    ->send();
+
+    if ($response->code != "200") {
+			return false;
+		} else {
+		  return true;
+    }
+  }
 }
