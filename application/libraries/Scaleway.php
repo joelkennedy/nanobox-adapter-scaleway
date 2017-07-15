@@ -80,4 +80,39 @@ class Scaleway
 		  return true;
     }
   }
+
+  public function updatekeys($authToken, $userID, $keys)
+  {
+    $publicKeys = array('ssh_public_keys' => $keys);
+
+    $url = "https://account.scaleway.com/users/".$userID;
+		$response = \Httpful\Request::patch($url)
+      ->xAuthToken($authToken)
+      ->body(json_encode($publicKeys))
+      ->sendsJson()
+	    ->expectsJson()
+	    ->send();
+
+    if ($response->code != "200") {
+			return false;
+		} else {
+		  return true;
+    }
+  }
+
+  public function listkeys($authToken, $userID)
+  {
+    $url = "https://account.scaleway.com/users/".$userID;
+		$response = \Httpful\Request::get($url)
+      ->xAuthToken($authToken)
+      ->body($key)
+	    ->expectsJson()
+	    ->send();
+
+    if ($response->code != "200") {
+			return false;
+		} else {
+		  return $response;
+    }
+  }
 }
