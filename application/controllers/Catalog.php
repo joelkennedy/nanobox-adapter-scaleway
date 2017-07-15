@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 
-class Catalog extends CI_Controller {
+class Catalog extends REST_Controller {
 
 	public function index_get()
 	{

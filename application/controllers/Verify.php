@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 
-class Verify extends CI_Controller {
+class Verify extends REST_Controller {
 
 	public function index_post()
 	{
