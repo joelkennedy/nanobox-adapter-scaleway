@@ -10,7 +10,7 @@ class Meta extends CI_Controller {
 			'name' => 'Scaleway',
 			'server_nick_name' => 'Server',
 			'default_region' => 'par1',
-			'default_size' => '4GB',
+			'default_size' => '2GB',
 			'default_plan' => 'VC1S',
 			'can_reboot' => true,
 			'can_rename' => true,
