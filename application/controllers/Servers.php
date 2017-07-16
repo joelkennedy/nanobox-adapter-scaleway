@@ -91,4 +91,16 @@ class Servers extends REST_Controller {
 
 		$this->set_response(null, 200);
 	}
+
+	public function rename_patch()
+	{
+		$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
+
+		$serverID = $this->uri->segment(2);
+		$name = $this->patch('name');
+
+		$response = $this->scaleway->serverrename($accessToken, $serverID, $name);
+
+		$this->set_response(null, 200);
+	}
 }

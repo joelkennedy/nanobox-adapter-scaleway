@@ -53,5 +53,6 @@ $route['default_controller'] = 'welcome';
 $route['setup/(:any)/(:any)'] = 'setup';
 $route['keys(:any)'] = 'keys';
 $route['servers/(:any)/reboot'] = 'servers/reboot';
+$route['servers/(:any)/rename'] = 'servers/rename';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

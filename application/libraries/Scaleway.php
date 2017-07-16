@@ -81,6 +81,24 @@ class Scaleway
     return $response->body;
 	}
 
+  public function serverrename($authToken, $serverID, $name)
+	{
+    // Get server details
+    $details = $this->serverdetails($authToken, $serverID);
+
+    $data = $details->server;
+
+    $url = "https://cp-par1.scaleway.com/servers/".$serverID;
+    $data->name = $name;
+		$response = \Httpful\Request::put($url)
+      ->xAuthToken($authToken)
+      ->body(json_encode($data))
+	    ->sendsJson()
+	    ->send();
+
+    return $response->body;
+	}
+
   public function listimages($authToken)
   {
     $url = "https://cp-par1.scaleway.com/images";
