@@ -78,7 +78,7 @@ class Servers extends REST_Controller {
 
 		$serverID = $this->uri->segment(2);
 
-		$response = $this->scaleway->serverdestroy($accessToken, $serverID);
+		$response = $this->scaleway->serveraction($accessToken, $serverID, "terminate");
 
 		$this->set_response(null, 200);
 	}
