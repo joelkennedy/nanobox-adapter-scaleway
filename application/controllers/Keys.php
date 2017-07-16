@@ -10,6 +10,8 @@ class Keys extends REST_Controller {
 		$name = $this->post('name');
 		$key = $this->post('key');
 
+		$name .= "nanobox-".rand(100000,999999);
+
 		if ($accessToken === NULL) {
 			$this->set_response(['errors' => array("You must provide the access token header")], 400);
 		} else {
