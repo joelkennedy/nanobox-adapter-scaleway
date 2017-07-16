@@ -12,7 +12,7 @@ class Catalog extends REST_Controller {
 				'name' => 'Paris',
 				'plans' => array(
 					array(
-						'id' => 'VC1S',
+						'id' => 'cloud',
 						'name' => 'Cloud Server',
 						'specs' => array(
 							array(
@@ -20,9 +20,9 @@ class Catalog extends REST_Controller {
 								'ram' => 2048,
 								'cpu' => 2,
 								'disk' => 50,
-								'transfer' => 'Unlimited',
-								'dollars_per_hr' => '0.006',
-								'dollars_per_mo' => '2.99'
+								'transfer' => 0,
+								'dollars_per_hr' => 0.006,
+								'dollars_per_mo' => 2.99
 							)
 						)
 					)
