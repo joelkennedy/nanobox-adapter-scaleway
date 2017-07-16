@@ -30,7 +30,7 @@ class Servers extends REST_Controller {
 				$response = $this->scaleway->serveraction($accessToken, $serverID, "poweron");
 
 				$response = array('id' => $serverID);
-				$this->set_response(null, 201);
+				$this->set_response($response, 201);
 			}
 		}
 	}
@@ -70,6 +70,17 @@ class Servers extends REST_Controller {
 		);
 
 		$this->set_response($finalResponse, 201);
+	}
+
+	public function index_delete()
+	{
+		$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
+
+		$serverID = $this->uri->segment(2);
+
+		$response = $this->scaleway->serverdestroy($accessToken, $serverID);
+
+		$this->set_response(null, 200);
 	}
 
 	public function reboot_patch()

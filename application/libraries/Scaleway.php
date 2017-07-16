@@ -59,6 +59,17 @@ class Scaleway
     return $response->body;
 	}
 
+  public function serverdestroy($authToken, $serverID, $action)
+	{
+    $url = "https://cp-par1.scaleway.com/servers/".$serverID;
+		$response = \Httpful\Request::delete($url)
+      ->xAuthToken($authToken)
+	    ->sendsJson()
+	    ->send();
+
+    return $response->body;
+	}
+
   public function serverdetails($authToken, $serverID)
 	{
     $url = "https://cp-par1.scaleway.com/servers/".$serverID;
