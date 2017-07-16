@@ -55,8 +55,8 @@ class Servers extends REST_Controller {
 			$publicIP = null;
 		}
 
-		if (isset($response->server->private_ip->address)) {
-			$privateIP = $response->server->private_ip->address;
+		if (isset($response->server->private_ip)) {
+			$privateIP = $response->server->private_ip;
 		} else {
 			$privateIP = null;
 		}
