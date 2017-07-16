@@ -35,11 +35,9 @@ class Servers extends REST_Controller {
 		}
 	}
 
-	public function query_get()
+	public function index_get($serverID)
 	{
 		$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
-
-		$serverID = $this->uri->segment(2);
 
 		$response = $this->scaleway->serverdetails($accessToken, $serverID);
 

@@ -45,10 +45,8 @@ class Keys extends REST_Controller {
 		}
 	}
 
-	public function query_get()
+	public function index_get($key)
 	{
-		$key = $this->uri->segment(2);
-
 		$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
 
 		$response = $this->scaleway->listorganisations($accessToken);
@@ -71,10 +69,8 @@ class Keys extends REST_Controller {
 		}
 	}
 
-	public function index_delete()
+	public function index_delete($key)
 	{
-		$key = $this->uri->segment(2);
-
 		if ($key == "") {
 			$this->set_response(null, 200);
 		} else {
