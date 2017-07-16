@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 $route['setup/(:any)/(:any)'] = 'setup';
-$route['keys/(:any)'] = 'keys/query';
+$route['keys(:any)'] = 'keys/query';
 $route['servers/(:any)'] = 'servers/query';
 $route['servers/(:any)/reboot'] = 'servers/reboot';
 $route['404_override'] = '';
