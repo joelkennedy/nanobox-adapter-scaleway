@@ -15,7 +15,7 @@ class Meta extends REST_Controller {
 			'default_plan' => 'cloud',
 			'can_reboot' => true,
 			'can_rename' => true,
-			'internal_iface' => 'eth1',
+			'internal_iface' => 'eth0',
 			'external_iface' => 'eth0',
 			'ssh_user' => 'root',
 			'ssh_auth_method' => 'key',
