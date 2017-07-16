@@ -71,46 +71,50 @@ class Keys extends REST_Controller {
 		}
 	}
 
-	public function query_delete()
+	public function index_delete()
 	{
 		$key = $this->uri->segment(2);
 
-		$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
-
-		if ($accessToken === NULL) {
-			$this->set_response(['errors' => array("You must provide the access token header")], 400);
+		if ($key == "") {
+			$this->set_response(null, 200);
 		} else {
-			// Find the user ID
-			$response = $this->scaleway->listorganisations($accessToken);
+			$accessToken = $this->input->get_request_header('Auth-Access-Token', TRUE);
 
-			$userID = $response->organizations[0]->users[0]->id;
-			$publicKeys = $response->organizations[0]->users[0]->ssh_public_keys;
-
-			if (!is_array($publicKeys)) {
-				$this->set_response(['errors' => array("Couldn't retrieve existing public keys")], 500);
+			if ($accessToken === NULL) {
+				$this->set_response(['errors' => array("You must provide the access token header")], 400);
 			} else {
-				$updatedKeys = array();
+				// Find the user ID
+				$response = $this->scaleway->listorganisations($accessToken);
 
-				$publicKeyFound = false;
-				foreach ($publicKeys as $publicKey) {
-					if (strpos($publicKey->key, $key) !== false) {
-						$publicKeyFound = true;
-					} else {
-						$thisKey = new \stdClass();
-						$thisKey->key = $publicKey->key;
-						$updatedKeys[] = $thisKey;
-					}
-				}
+				$userID = $response->organizations[0]->users[0]->id;
+				$publicKeys = $response->organizations[0]->users[0]->ssh_public_keys;
 
-				if (!$publicKeyFound) {
-					$this->set_response(['errors' => array("Public key doesn't exist")], 404);
+				if (!is_array($publicKeys)) {
+					$this->set_response(['errors' => array("Couldn't retrieve existing public keys")], 500);
 				} else {
-					$response = $this->scaleway->updatekeys($accessToken, $userID, $updatedKeys);
+					$updatedKeys = array();
 
-					if (!$response) {
-						$this->set_response(['errors' => array("Request failed")], 500);
+					$publicKeyFound = false;
+					foreach ($publicKeys as $publicKey) {
+						if (strpos($publicKey->key, $key) !== false) {
+							$publicKeyFound = true;
+						} else {
+							$thisKey = new \stdClass();
+							$thisKey->key = $publicKey->key;
+							$updatedKeys[] = $thisKey;
+						}
+					}
+
+					if (!$publicKeyFound) {
+						$this->set_response(['errors' => array("Public key doesn't exist")], 404);
 					} else {
-						$this->set_response(null, 200);
+						$response = $this->scaleway->updatekeys($accessToken, $userID, $updatedKeys);
+
+						if (!$response) {
+							$this->set_response(['errors' => array("Request failed")], 500);
+						} else {
+							$this->set_response(null, 200);
+						}
 					}
 				}
 			}
