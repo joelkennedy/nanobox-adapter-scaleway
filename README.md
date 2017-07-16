@@ -17,3 +17,5 @@ Only supports Individual accounts (not Corporate)
 Support for the ams1 region
 
 Permanent IPs - currently IPs are destroyed along with the server. This includes during scaling operations
+
+Better error handling for when the API is down, servers are out of stock or when server quotas are reached.
