@@ -7,12 +7,12 @@ class Meta extends REST_Controller {
 	public function index_get()
 	{
 		$response = array(
-			'id' => 'scaleway',
+			'id' => 'sw',
 			'name' => 'Scaleway',
 			'server_nick_name' => 'Server',
 			'default_region' => 'par1',
-			'default_size' => '2GB',
-			'default_plan' => 'VC1S',
+			'default_size' => 'VC1S',
+			'default_plan' => 'cloud',
 			'can_reboot' => true,
 			'can_rename' => true,
 			'internal_iface' => 'eth1',
