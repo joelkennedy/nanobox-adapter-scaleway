@@ -63,7 +63,7 @@ class Servers extends REST_Controller {
 
 		$finalResponse = array(
 			'id' => $response->server->id,
-			'status' => $response->server->state,
+			'status' => $status,
 			'name' => $response->server->name,
 			'external_ip' => $publicIP,
 			'internal_ip' => $privateIP
