@@ -44,6 +44,32 @@ class Scaleway
     return $response->body;
 	}
 
+  public function serveraction($authToken, $serverID, $action)
+	{
+    $url = "https://cp-par1.scaleway.com/servers/".$serverID."/action";
+    $data = array(
+      'action' => $action
+    );
+		$response = \Httpful\Request::post($url)
+      ->xAuthToken($authToken)
+			->body(json_encode($data))
+	    ->sendsJson()
+	    ->send();
+
+    return $response->body;
+	}
+
+  public function serverdetails($authToken, $serverID)
+	{
+    $url = "https://cp-par1.scaleway.com/servers/".$serverID;
+		$response = \Httpful\Request::get($url)
+      ->xAuthToken($authToken)
+	    ->sendsJson()
+	    ->send();
+
+    return $response->body;
+	}
+
   public function listimages($authToken)
   {
     $url = "https://cp-par1.scaleway.com/images";
