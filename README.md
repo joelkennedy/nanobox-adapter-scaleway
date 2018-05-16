@@ -1,5 +1,7 @@
 # Nanobox Cloud Provider adapter for Scaleway
 
+DEPRECATED - Nanobox now provided an official adapter for Scaleway.
+
 Unofficial!
 
 ### How to setup
